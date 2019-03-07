@@ -18,3 +18,35 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth
+Route::post('/login/custom', [
+    'uses' => 'Auth\LoginController@login',
+
+    'as' => 'login.custom',
+]);
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/home', function(){
+        return view('home');
+    })->name('home');
+
+    // Client
+    Route::get('/searchClients', 'ClientController@search');
+    Route::resource('clients', 'ClientController');
+
+    //Projet
+    Route::get('/searchProjets', 'ProjetController@search');
+    //Route::get('/projets?search=(.*)', 'ProjetController@search');
+    Route::resource('projets', 'ProjetController');
+
+    //Devis
+    Route::get('/projets/{ref}/devis', 'DevisController@index');
+    Route::get('/projets/{ref}/devis/{ref_devis}/edit', 'DevisController@edit');
+
+    //Module
+    Route::get('/modules', 'ModuleController@index');
+    Route::get('/searchModules', 'ModuleController@search');
+    Route::resource('modules', 'ModuleController');
+
+});
