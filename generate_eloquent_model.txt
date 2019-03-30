@@ -1,0 +1,15 @@
+php artisan krlove:generate:model DetailHistoire --table-name=detail_histoire
+php artisan krlove:generate:model Equipement --table-name=equipement
+php artisan krlove:generate:model Histoire --table-name=histoire
+php artisan krlove:generate:model Inventaire --table-name=inventaire
+php artisan krlove:generate:model Objet --table-name=objet
+php artisan krlove:generate:model Personnage --table-name=personnage
+php artisan krlove:generate:model RefEquipement --table-name=ref_equipement
+php artisan krlove:generate:model RefHistoire --table-name=ref_histoire
+php artisan krlove:generate:model RefObjet --table-name=ref_objet
+php artisan krlove:generate:model RefSlot --table-name=ref_slot
+php artisan krlove:generate:model RefStat --table-name=ref_stat
+php artisan krlove:generate:model Role --table-name=role
+php artisan krlove:generate:model Sauvegarde --table-name=sauvegarde
+php artisan krlove:generate:model StatPersonnage --table-name=stat_personnage
+php artisan krlove:generate:model User --table-name=user

@@ -168,6 +168,9 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+
+        Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
