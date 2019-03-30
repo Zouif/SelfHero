@@ -31,7 +31,7 @@ class RefHistoire extends Model
     /**
      * @var array
      */
-    protected $fillable = ['nom', 'auteur', 'avis'];
+    protected $fillable = ['nom', 'auteur', 'avis', 'url_image'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

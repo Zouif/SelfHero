@@ -65,6 +65,12 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/refhistoires') }}">Histoires</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/moncompte') }}">Mon Compte</a>
+                            </li>
                         @endif
                     </ul>
                 </div>
