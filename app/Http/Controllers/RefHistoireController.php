@@ -46,43 +46,8 @@ class RefHistoireController extends Controller
 
         $search = $request->get('search');
 
-        $refhistoires = DB::table('refhistoire')->join('client', 'client.id_client', '=', 'refhistoire.id_client')
-            ->Where(
-                [
-                    ['id_user', '=', auth()->id()],
-                    ['id_refhistoire', 'like', '%' . $search . '%'],
-                    ['client.archive', '=', false]
-                ])
-            ->orWhere(
-                [
-                    ['id_user', '=', auth()->id()],
-                    ['ref_client', 'like', '%' . $search . '%'],
-                    ['client.archive', '=', false]
-                ])
-            ->orWhere(
-                [
-                    ['id_user', '=', auth()->id()],
-                    ['id_user', 'like', '%' . $search . '%'],
-                    ['client.archive', '=', false]
-                ])
-            ->orWhere(
-                [
-                    ['id_user', '=', auth()->id()],
-                    ['nom_refhistoire', 'like', '%' . $search . '%'],
-                    ['client.archive', '=', false]
-                ])
-            ->orWhere(
-                [
-                    ['id_user', '=', auth()->id()],
-                    ['date_refhistoire', 'like', '%' . $search . '%'],
-                    ['client.archive', '=', false]
-                ])
-            ->orWhere(
-                [
-                    ['id_user', '=', auth()->id()],
-                    ['ref_refhistoire', 'like', '%' . $search . '%'],
-                    ['client.archive', '=', false]
-                ]);
+        $refhistoires = DB::table('ref_histoire')
+            ->Where('nom', 'like', '%' . $search . '%');
         $refhistoires = $refhistoires->get();
         return view('refhistoires.index', ['refhistoires' => $refhistoires]);
     }
@@ -121,10 +86,10 @@ class RefHistoireController extends Controller
      * @param  int  $id_refhistoire
      * @return \Illuminate\Http\Response
      */
-    public function show($id_client)
+    public function show($id_ref_histoires)
     {
 
-        return redirect('/refhistoires/create')->with('id', $id_client);
+        return redirect('/histoire/index')->with('id', $id_client);
 
     }
 
