@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id_detail_histoire
- * @property int $id_histoire
+ * @property int $id_ref_histoire
  * @property string $contenue
- * @property Histoire $histoire
+ * @property int $numero_page
+ * @property RefHistoire $refHistoire
+ * @property Sauvegarde[] $sauvegardes
  */
 class DetailHistoire extends Model
 {
@@ -30,13 +32,21 @@ class DetailHistoire extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_histoire', 'contenue'];
+    protected $fillable = ['id_ref_histoire', 'contenue', 'numero_page'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function histoire()
+    public function refHistoire()
     {
-        return $this->belongsTo('App\Histoire', 'id_histoire', 'id_histoire');
+        return $this->belongsTo('App\RefHistoire', 'id_ref_histoire', 'id_ref_histoire');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sauvegardes()
+    {
+        return $this->hasMany('App\Sauvegarde', 'id_detail_histoire', 'id_detail_histoire');
     }
 }

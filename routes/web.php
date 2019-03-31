@@ -31,17 +31,18 @@ Route::group(['middleware' => 'auth'], function(){
         return view('home');
     })->name('home');
 
-    // Client
-    Route::get('/searchClients', 'ClientController@search');
-    Route::resource('clients', 'ClientController');
-
-    //Projet
-    Route::get('/searchProjets', 'ProjetController@search');
-    Route::resource('projets', 'ProjetController');
-
     //RefHistoires
     Route::get('/searchRefHistoires', 'RefHistoireController@search');
     Route::resource('refhistoires', 'RefHistoireController');
+
+    //Histoire
+    Route::get('/histoire/nextPage', [
+        'uses' => 'HistoireController@nextPage'
+    ]);
+    Route::resource('histoire', 'HistoireController');
+
+    //Personnage
+    Route::resource('personnage', 'PersonnageController');
 
     //Devis
     Route::get('/devis/delete/module', [

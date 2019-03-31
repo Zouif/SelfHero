@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use App\RefHistoire;
+use App\Personnage;
+use App\Histoire;
+use App\DetailHistoire;
+use App\Sauvegarde;
 
-class RefHistoireController extends Controller
+class PersonnageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,9 +25,9 @@ class RefHistoireController extends Controller
 //        return view('histoires.index', compact('histoires'));
 
 
-        $refhistoires = RefHistoire::all();
+        $histoire = Histoire::all()->Where('id_ref_','=', session()->get('id_ref_histoire'));
 
-        return view('refhistoires.index', compact('refhistoires'));
+        return view('histoire.index', compact('histoire'));
     }
 
     /**
@@ -36,21 +39,9 @@ class RefHistoireController extends Controller
     {
         //$id = $request->get('id');
 
-        return view('refhistoires.create');
+        return view('personnage.create')->with('id_ref_histoire', session()->get('id_ref_histoire'));
     }
 
-
-    public function search(Request $request)
-    {
-        //dd($request->all());
-
-        $search = $request->get('search');
-
-        $refhistoires = DB::table('ref_histoire')
-            ->Where('nom', 'like', '%' . $search . '%');
-        $refhistoires = $refhistoires->get();
-        return view('refhistoires.index', ['refhistoires' => $refhistoires]);
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -59,25 +50,34 @@ class RefHistoireController extends Controller
      */
     public function store(Request $request)
     {
+        //auth()->id()
+        $this->validate($request, [
+            'nom_personnage'=>'required',
+        ]);
 
-//        $request->validate([
-//            'ref_client'=>'required',
-//            'nom_histoire'=>'required'
-//
-//        ]);
-//
-//        $clients = DB::table('client')->where('ref_client', '=', $request->get('ref_client'));
-//        $clients = $clients->get();
-//
-//        $refhistoire = new refhistoire([
-//            'id_client' => $clients[0]->id_client,
-//            'id_user'=> auth()->id(),
-//            'nom_refhistoire'=> $request->get('nom_refhistoire'),
-//            'date_refhistoire' => Carbon::now()->toDateTimeString(),
-//            'ref_refhistoire'=> str_random(5)
-//        ]);
-//        $refhistoire->save();
-//        return redirect('/refhistoires')->with('success', 'Un refhistoire a été rajouté');
+        $personnage = new personnage([
+            'nom_personnage'=> $request->get('nom_personnage')
+        ]);
+        $personnage->save();
+
+        $detailhistoire = DB::table('detail_histoire')->Where([
+            ['id_ref_histoire', '=', session()->get('id_ref_histoire')],
+            ['numero_page', '=', 1]
+        ]);
+        $detailhistoire = $detailhistoire->get();
+
+        $sauvegarde = new sauvegarde([
+            'id_user' => auth()->id(),
+            'id_detail_histoire' => $detailhistoire[0]->id_detail_histoire,
+            'id_personnage' => $personnage->getAttribute('id_personnage')
+        ]);
+        $sauvegarde->save();
+
+        session()->put('sauvegarde', $sauvegarde);
+
+        session()->put('id_ref_histoire', session()->get('id_ref_histoire'));
+
+        return redirect('/histoire');
     }
 
     /**
@@ -86,10 +86,10 @@ class RefHistoireController extends Controller
      * @param  int  $id_refhistoire
      * @return \Illuminate\Http\Response
      */
-    public function show($id_ref_histoires)
+    public function show($id_ref_histoire)
     {
-//        return redirect('/histoire/index')->with('id', $id_ref_histoires);
-
+        session()->put('id_ref_histoire', $id_ref_histoire);
+        return redirect('/personnage/create');
     }
 
     /**
