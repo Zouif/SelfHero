@@ -31,6 +31,10 @@ Route::group(['middleware' => 'auth'], function(){
         return view('home');
     })->name('home');
 
+    Route::get("/monprofile", function(){
+        return View::make("moncompte.profile.index");
+    });
+
     //RefHistoires
     Route::get('/searchRefHistoires', 'RefHistoireController@search');
     Route::resource('refhistoires', 'RefHistoireController');

@@ -24,7 +24,8 @@ class HistoireController extends Controller
 
         $json = json_decode($detailhistoire[0]->contenue);
 
-//        return view('histoire.index', compact('$detailhistoire'));
+        $json->texte = preg_replace("/\\n/", "\n", $json->texte);
+
         return view('histoire.index', compact('json'));
     }
 

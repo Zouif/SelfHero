@@ -57,18 +57,13 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu" value="Mon Compte">
                                     <li>
-                                        <a href="{{ url('/monprofil') }}">
+                                        <a href="{{ url('/monprofile') }}">
                                             Profil
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/meshistoires') }}">
                                             Mes Histoires
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('/monabonnement') }}">
-                                            Mon Abonnement
                                         </a>
                                     </li>
                                     <li>
