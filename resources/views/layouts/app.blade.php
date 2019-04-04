@@ -68,6 +68,29 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/refhistoires') }}">Histoires</a>
                             </li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} Mon Compte
+                                </a>
+                                <ul class="dropdown-menu" role="menu" value="Mon Compte">
+                                    <li>
+                                        <a href="{{ url('/monprofil') }}">
+                                            Profil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/meshistoires') }}">
+                                            Mes Histoires
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/monabonnement') }}">
+                                            Mon Abonnement
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/moncompte') }}">Mon Compte</a>
                             </li>

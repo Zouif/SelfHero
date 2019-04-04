@@ -44,24 +44,28 @@ Route::group(['middleware' => 'auth'], function(){
     //Personnage
     Route::resource('personnage', 'PersonnageController');
 
+    //MonCompte
+    Route::get('/searchMesHistoires', 'MesHistoireController@search');
+    Route::resource('meshistoires', 'MesHistoireController');
+
     //Devis
-    Route::get('/devis/delete/module', [
-        'uses' => 'DevisController@deleteModule'
-    ]);
-    Route::resource('devis', 'DevisController');
+//    Route::get('/devis/delete/module', [
+//        'uses' => 'DevisController@deleteModule'
+//    ]);
+//    Route::resource('devis', 'DevisController');
 
 
     //Produit
-    Route::get('/devis/delete/produit', [
-        'uses' => 'ProduitController@deleteModule'
-    ]);
-    Route::get('/devis/deleteCreate/produit', [
-        'uses' => 'ProduitController@deleteModuleCreate'
-    ]);
-    Route::get('/produit/prepareedit', [
-        'uses' => 'ProduitController@prepareedit'
-    ]);
-    Route::resource('produits', 'ProduitController');
+//    Route::get('/devis/delete/produit', [
+//        'uses' => 'ProduitController@deleteModule'
+//    ]);
+//    Route::get('/devis/deleteCreate/produit', [
+//        'uses' => 'ProduitController@deleteModuleCreate'
+//    ]);
+//    Route::get('/produit/prepareedit', [
+//        'uses' => 'ProduitController@prepareedit'
+//    ]);
+//    Route::resource('produits', 'ProduitController');
 
     //Module
 //    Route::get('/modules', 'ModuleController@index');
