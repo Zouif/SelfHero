@@ -33,14 +33,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">NKII</a>
+            <a class="navbar-brand" href="#">SelfHeroes</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">A propos de nous</a></li>
+                <li><a href="#portfolio">Nos meilleurs histoires</a></li>
+                <li><a href="#contact">Nos prix</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -65,17 +65,14 @@
 
         <div class="row"> <!-- dugmici, social -->
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <a href="https://clashofclans.com/clans/clan?clanTag=8GPQG0JC" class="btn btn-lg btn-outline">
-                    <i class="fa fa-shield"></i> ClashOfClans
+                <a href="{{ url('/login') }}" class="btn btn-lg btn-outline">
+                    <i class="fa fa-shield"></i> Login
                 </a>
 
-                <a href="https://www.freecodecamp.com/cedevita" class="btn btn-lg btn-outline">
-                    <i class="fa fa-fire fa-fw"></i> Code Camp
+                <a href="{{ url('/register') }}"  class="btn btn-lg btn-outline">
+                    <i class="fa fa-fire fa-fw"></i> Register
                 </a>
 
-                <a href="https://www.facebook.com/mladenruzicic" class="btn btn-lg btn-outline">
-                    <i class="fa fa-facebook"></i> Facebook
-                </a>
 
             </div>
         </div>
@@ -89,7 +86,7 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>About</h2>
+                <h2>A propos de nous</h2>
                 <hr class="star-primary">
             </div>
         </div>
@@ -99,8 +96,8 @@
                 <img src="https://cdn.moldovacrestina.md/2016/09/shutterstock_110989019.jpg" class="img-responsive" alt="">
             </div>
             <div class="col-lg-6">
-                <p><strong>NKII</strong><br>
-                    <small>stands for "Najjaci klan idje ikad", founded 2015.</small><br></p>
+                <p><strong>SelfHeroes</strong><br>
+                    <small>sit amet, consectetur adipiscing elit. Sed rutrum porta tellus.</small><br></p>
 
                 <div class="progress">
                     <div class="progress-bar progress-bar-success" style="width: 55%">
@@ -114,9 +111,9 @@
 
 
 
-                <p><strong>Clash of Clans</strong> is a superb game, freemium or otherwise, with more nuance than most give it credit for. That's why it's passed the test of time since its launch and still has an active community devotedly constructing elaborate fortresses in the hope of becoming invincible.</p>
-                <p>Clash of Clans is thus a simple game, but that’s more of a strength than a weakness. It’s simple enough to provide quick, painless matches on an iPhone in an idle moment, and there are enough different units to choose from in the battle mode to make playing against other players endlessly rewarding.</p>
-                <p>Best of all, the option to fight against NPC goblins gives Clash of Clans a small edge over similar strategy games that rely almost entirely on player-versus-player combat.</p>
+                <p><strong>Lorem ipsum dolor</strong>  sit amet, consectetur adipiscing elit. Sed rutrum porta tellus sit amet tincidunt. Maecenas dictum suscipit enim, a tempus tortor euismod sed. Donec justo nulla, semper et turpis id, volutpat faucibus urna. Nunc velit odio, faucibus vitae hendrerit porta, dictum eget dui. Duis at urna quam. Donec nisl nisi, bibendum vel feugiat in, blandit at neque.</p>
+                <p>Duis orci lorem, vestibulum vitae scelerisque ut, aliquet non ante. Aenean eleifend mi tincidunt diam condimentum viverra. In tincidunt dolor ac viverra feugiat. Aliquam eu mattis felis. Donec viverra neque ut lorem semper egestas. Quisque at risus ultrices, hendrerit nunc eu, posuere erat.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed rutrum porta tellus sit amet tincidunt. Maecenas dictum suscipit enim, a</p>
             </div>
         </div>
 
@@ -189,7 +186,7 @@
         <div id="pricing-table" class="clear center-block">
             <div class="plan">
                 <h3>Noob<span>0€</span></h3>
-                <a class="signup" href="">Sign up</a>
+                <a class="signup" href="{{ url('/register') }}">Sign up</a>
                 <ul>
                     <li><b>1</b> Histoire a la fois</li>
                     <li><b>1</b> Sauvegarde</li>
@@ -197,7 +194,7 @@
             </div>
             <div class="plan" id="most-popular">
                 <h3>Barroudeur<span>1,50€/m</span></h3>
-                <a class="signup" href="">Sign up</a>
+                <a class="signup" href="{{ url('/register') }}">Sign up</a>
                 <ul>
                     <li><b>5</b> Histoire a la fois</li>
                     <li><b>5</b> Sauvegarde</li>
@@ -205,7 +202,7 @@
             </div>
             <div class="plan">
                 <h3>Grand guerrier<span>3€/m</span></h3>
-                <a class="signup" href="">Sign up</a>
+                <a class="signup" href="{{ url('/register') }}">Sign up</a>
                 <ul>
                     <li><b>Illimité</b> Histoire a la fois</li>
                     <li><b>Illimité</b> Sauvegarde</li>
@@ -226,11 +223,11 @@
             <div class="col-lg-12">
                 <ul class="list-inline">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about">A propos de nous</a></li>
+                    <li><a href="#portfolio">Nos meilleurs histoires</a></li>
+                    <li><a href="#contact">Nos prix</a></li>
                 </ul>
-                <p>11761 <small>Total Points</small> 31 <small>Wars Won</small> War Frequency: <u>Always</u></p>
+
             </div>
 
         </div>

@@ -20,11 +20,12 @@
             @endif
             <form method="post" action="{{ route('personnage.store') }}">
                 {{ csrf_field() }}
-                <div class="form-group">
+                <div class="form-group" style="margin: 0 25%;">
                     <label for="nom_personnage">QUEL EST TON NOM DE HERO !</label>
                     <input type="text" class="form-control" name="nom_personnage"/>
+                    <button type="submit" class="btn btn-primary">Add</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Add</button>
+
             </form>
         </div>
     </div>
