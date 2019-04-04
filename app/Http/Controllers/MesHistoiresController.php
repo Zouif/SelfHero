@@ -25,6 +25,24 @@ class MesHistoiresController extends Controller
             ->where('sauvegarde.id_user', '=', auth()->id())
             ->get();
 
+        foreach($refhistoires as $refhistoire){
+            $sauvegarde = DB::table('sauvegarde')
+                ->join('detail_histoire', 'detail_histoire.id_detail_histoire', '=', 'sauvegarde.id_detail_histoire')
+                ->where([
+                    ['sauvegarde.id_user', '=', auth()->id()],
+                    ['detail_histoire.id_ref_histoire', '=', $refhistoire->id_ref_histoire],
+                    ])
+                ->get();
+
+            if($sauvegarde->first()){
+                $personnage = DB::table('personnage')
+                    ->Where('personnage.id_personnage', '=', $sauvegarde[0]->id_personnage)->get();
+                if($personnage->first()){
+                    $refhistoire->personnage = $personnage[0];
+                }
+            }
+        }
+
         return view('moncompte.meshistoires.index', compact('refhistoires'));
     }
 

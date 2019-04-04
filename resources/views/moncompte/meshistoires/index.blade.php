@@ -33,6 +33,7 @@
             @foreach($refhistoires  as $key=>$refhistoire)
                 <div class="col-md-5 m-5">
                     <h3>{{$refhistoire->nom}}</h3>
+                    <h3>{{$refhistoire->personnage->nom_personnage}}</h3>
                     {{--<a href="{{ route('histoires.show', $histoire->ref_histoire) }}">--}}
                     <a class="w-10" href="{{ action('HistoireController@checkSauvegarde', 'id_ref_histoire='.$refhistoire->id_ref_histoire) }}">
                         <img class="w-25" src={{ asset('storage/image/' . $refhistoire->url_image)}}>
