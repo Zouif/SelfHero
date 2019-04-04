@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\RefHistoire;
+use App\Sauvegarde;
+use App\Personnage;
+use App\Inventaire;
 
-class MesHistoireController extends Controller
+class MesHistoiresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -147,10 +150,26 @@ class MesHistoireController extends Controller
     }
 
 
-    public function deleteSauvegarde($id_refhistoire){
-        $sauvegarde = refhistoire::find($id_refhistoire);
-        $refhistoire->delete();
+    public function supprimerSauvegarde(Request $request){
 
-        return redirect('/refhistoires')->with('success', 'Un histoire a été supprimé');
+        $sauvegarde = DB::table('sauvegarde')
+            ->join('detail_histoire', 'detail_histoire.id_detail_histoire', '=', 'sauvegarde.id_detail_histoire')
+            ->Where('detail_histoire.id_ref_histoire', '=', $request->id_ref_histoire)->get();
+
+        $personnage = DB::table('personnage')
+            ->Where('personnage.id_personnage', '=', $sauvegarde[0]->id_personnage)->get();
+
+        $inventaire = DB::table('inventaire')
+            ->Where('inventaire.id_personnage', '=', $personnage[0]->id_personnage)->get();
+
+        sauvegarde::find($sauvegarde[0]->id_sauvegarde)->delete();
+
+        if($inventaire->first()){
+            inventaire::find($inventaire[0]->id_inventaire)->delete();
+        }
+
+        personnage::find($personnage[0]->id_personnage)->delete();
+
+        return redirect('/meshistoires');
     }
 }

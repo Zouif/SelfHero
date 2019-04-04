@@ -96,6 +96,7 @@ class PersonnageController extends Controller
             ->get();
 
         if($sauvegarde->first()){
+            session()->put('sauvegarde', $sauvegarde);
             return redirect('/histoire');
         }
 

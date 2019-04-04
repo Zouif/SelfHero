@@ -13,7 +13,7 @@
             </div><br />
         @endif
         <div class="">
-            <form action="/searchRefHistoires" method="get">
+            <form action="/searchMesHistoires" method="get">
                 <div class="input-group">
                     <input type="search" name="search" class="form-control">
                     <span class="input-group-prepend">
@@ -30,15 +30,16 @@
             {{--<a href="">--}}
                 {{--<img src={{ asset('storage/image/histoire.jpg') }}>--}}
             {{--</a>--}}
-            @foreach($refhistoires as $refhistoire)
+            @foreach($refhistoires  as $key=>$refhistoire)
                 <div class="col-md-5 m-5">
                     <h3>{{$refhistoire->nom}}</h3>
                     {{--<a href="{{ route('histoires.show', $histoire->ref_histoire) }}">--}}
                     <a class="w-10" href="{{ action('HistoireController@checkSauvegarde', 'id_ref_histoire='.$refhistoire->id_ref_histoire) }}">
                         <img class="w-25" src={{ asset('storage/image/' . $refhistoire->url_image)}}>
                     </a>
-                    <p>{{$refhistoire->auteur}}</p>
-                    <p>{{$refhistoire->avis}}</p>
+                    <p>Auteur : {{$refhistoire->auteur}}</p>
+                    <p>Avis : {{$refhistoire->avis}} / 10</p>
+                    <a href="{{ action('MesHistoiresController@supprimerSauvegarde', 'id_ref_histoire='.$refhistoire->id_ref_histoire) }}" class="btn btn-danger">Supprimer</a>
                     {{--<td><a href="{{ route('refhistoires.edit',$refhistoire->id_refhistoire)}}" class="btn btn-primary">Edit</a></td>--}}
                     {{--<td>--}}
                         {{--<form action="{{ route('refhistoires.destroy', $refhistoire->id_refhistoire)}}" method="post">--}}

@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('refhistoires', 'RefHistoireController');
 
     //Histoire
+    Route::get('/histoire/checkSauvegarde', [
+        'uses' => 'HistoireController@checkSauvegarde'
+    ]);
     Route::get('/histoire/nextPage', [
         'uses' => 'HistoireController@nextPage'
     ]);
@@ -45,8 +48,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('personnage', 'PersonnageController');
 
     //MonCompte
-    Route::get('/searchMesHistoires', 'MesHistoireController@search');
-    Route::resource('meshistoires', 'MesHistoireController');
+    Route::get('/meshistoires/delete', [
+        'uses' => 'MesHistoiresController@supprimerSauvegarde'
+    ]);
+    Route::get('/searchMesHistoires', 'MesHistoiresController@search');
+    Route::resource('meshistoires', 'MesHistoiresController');
 
     //Devis
 //    Route::get('/devis/delete/module', [
